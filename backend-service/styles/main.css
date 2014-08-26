@@ -1,0 +1,197 @@
+@font-face{
+  font-family: myFont;
+  src: url('../fonts/STENCIL.TTF');
+}
+
+
+body  {
+	position: relative;
+    background-image: url('../styles/images/samsung-logo2.jpg');
+    background-repeat: no-repeat;            
+    background-size: 100%;
+    font-family: myFont;
+}
+
+body #users-view{
+	position: relative;
+	display: none;
+}
+
+#users-view input{
+  border-radius: 5px 5px 5px 5px;  
+  font-weight: bold;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+
+#users-view #section-options{
+	position: absolute;
+	top: 30px;
+	left: 10px;
+}
+
+#users-view #section-options h1{
+	text-align: center;
+	color: white;
+}
+
+#users-view #section-options input[type="button"]{
+  background-color: white;
+  border-radius: 0px 20px 20px 0px;
+  color: rgb(48, 88, 173);
+  font-weight: bold;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;	
+}
+
+#users-view #section-options input[type="button"]:active{
+  background: rgb(48, 88, 100);
+  border: 5px solid;
+  border-color: white;
+  color: white;
+  font-weight: bold;
+}
+
+#users-view #new-user{
+	position: absolute;
+  display: none;
+	left: 40%;
+	top: 30px;
+}
+
+#users-view #new-user h1{
+	text-align: center;
+	color: white;
+}
+
+#users-view #new-user form input{
+	width: 500px;
+	color: rgb(48, 88, 173);
+}
+
+#users-view #new-user form input[type="reset"]{	
+  background-color: rgb(148, 5, 5);
+  width: 264px;
+  color: white;
+}
+
+#users-view #new-user form input[type="reset"]:active{
+  background-color: rgb(70, 3, 3);
+}
+
+#users-view #new-user form input[type="button"]{
+  background-color: rgb(18, 199, 76);
+  width: 264px;
+  color: white;
+}
+
+#users-view #new-user form input[type="button"]:active{
+  background-color: rgb(7, 114, 41);  
+}
+
+#show-info-add{
+	text-align: center;
+	background-color: white;
+	color: rgb(48, 88, 173);
+	border: 3px solid;
+	border-radius: 10px;
+	font-size: 20px;
+	display: none;
+}
+
+#users-view #find-user{
+  position: absolute;
+  display: none;
+  left: 40%;
+  top: 30px;  
+}
+
+#users-view #find-user h1{
+  text-align: center;
+  color: white;  
+}
+
+#users-view #find-user form input[type="text"]{
+  width: 350px;
+  color: rgb(48, 88, 173);  
+}
+
+#users-view #find-user form input[type="button"]{
+  width: 100px; 
+  background: rgb(94, 86, 86);
+  font-weight: bold;
+  color: white;
+}
+
+#users-view #find-user form input[type="button"]:hover {
+  background: rgb(48, 88, 173);
+  color: white;
+  font-weight: bold;
+}
+
+#users-view #find-user form input[type="button"]:active {
+  background: rgb(48, 88, 100);
+  color: white;
+  font-weight: bold;
+}
+
+#users-view #find-user form #bt-find-by-allusers{
+  width: 100%;
+  text-align: center;  
+}
+
+#show-info-find{
+  text-align: center;
+  background-color: white;
+  color: rgb(48, 88, 173);
+  border: 3px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  display: none;  
+}
+
+#users-view #section-list-user{
+  position: absolute;
+  display: none;
+  left: 30%;
+  width: 1000px;
+  top: 30px;  
+}
+
+#users-view #section-list-user ul li{
+  position: relative;
+  background-color: white;
+  color: rgb(48, 88, 173);
+  height: 30px;
+}
+
+#users-view #section-list-user ul span{
+  position: absolute;
+  top: 10px;
+  font-size: 12px;
+}
+
+#users-view #section-list-user ul .list-displayname{
+  left: 5px;
+}
+
+#users-view #section-list-user ul .list-user{
+  left: 300px;
+}
+
+#users-view #section-list-user ul .list-email{
+  left: 450px;
+}
+
+#users-view #section-list-user ul .list-samsungid{
+  left: 800px;
+}
+
+
+
+
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guia de Execução</title>
+        <meta charset="utf-8" />
+        <script src="scripts/lib/jquery.min.js"></script>
+        <script src="scripts/lib/everlive.all.min.js"></script>
+        <script src="scripts/app/settings.js" type="text/javascript"></script>
+        <script src="scripts/app/app.js" type="text/javascript"></script>
+        <script src="scripts/app/display-control.js" type="text/javascript"></script>
+        <script src="scripts/app/create-elements.js" type="text/javascript"></script>
+
+        <!--<script src="scripts/app/register.js" type="text/javascript"></script>-->
+        <style type="text/css">
+
+        </style>
+
+        <link href="styles/main.css" rel="stylesheet" />
+        <link href="styles/login.css" rel="stylesheet" />
+        <link href="styles/loader.css" rel="stylesheet" />
+        <link href="styles/push-notification.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!--************************** LOGIN ********************************************-->
+        <div id="login">
+            <form name='form-login' id="form-login">                
+
+                <h1>GUIA DE EXECUÇÃO</h1>
+
+                <span class="fontawesome-user"><img src="styles/images/icon-user.png"></span>
+                <input type="text" id="user" placeholder="Usuário" value="antonio" required>
+
+                <span class="fontawesome-lock"><img src="styles/images/icon-password.png"></span>
+                <input type="password" id"pass" placeholder="Senha" value="antonio" required>               
+                <input type="button" value="Login" onclick="app.getDataForm()">
+                <p id="show-error-login">Usuário ou senha inválido.</p>
+                <footer><img id="logo-footer" src="styles/images/samsung.png"></footer>
+            </form>            
+        </div>
+
+        <!--************************** TELA DE USUARIOS ********************************************-->
+        <div id="users-view">
+
+            <!--************************** MENU DE OPCOES ********************************************-->   
+            <section id="section-options">                        
+                <h1>OPÇÕES</h1>
+
+                <input type="button" value="Adicionar usuário" onclick="displayControl.showAddNewUser()"><br><br>  
+                <input type="button" value="Buscar usuários" onclick="displayControl.showFindUsers()"><br><br>  
+                <input type="button" value="Limpar lista de usuários" onclick=""><br><br>  
+                <input type="button" value="Enviar push notification" onclick="displayControl.showSettingsPush()">             
+            </section>
+
+            <!--************************** CADASTRAR USUARIO ********************************************-->   
+            <section id="new-user">
+                <h1>Cadastro Novo Usuário</h1>
+                <form name="add-new-user">
+                    <input type="text" id="new-username" placeholder="Username" required><br><br> 
+                    <input type="password" id"new-password" placeholder="Password" required><br><br> 
+                    <input type="email" id"new-email" placeholder="Email" required><br><br> 
+                    <input type="text" id"new-displayname" placeholder="Display Name" required><br><br> 
+                    <input type="text" id"new-samsungId" placeholder="Samsung ID" required><br>
+                    <input type="reset" id"cancel-new-user" value="Limpar">
+                    <input type="button" id"save-new-user" value="Salvar" onclick="app.validateForm(this.form)">
+                    <p id="show-info-add"></p>
+                </form>
+            </section>
+
+            <!--************************** BUSCAR USUARIO ********************************************-->
+            <section id="find-user">
+                <h1>Buscar Usuários</h1>
+                <form id="find-users-form" name="find-users-form">
+                    <input type="text" id="find-by-name" placeholder="Buscar por Nome"><input type="button" id="bt-find-by-name" value="Buscar" onclick="app.findAllUsers('find-by-name', 'name')"><br><br>
+                    <input type="text" id="find-by-email" placeholder="Buscar por Email"><input type="button" id="bt-find-by-email" value="Buscar" onclick="app.findAllUsers('find-by-email', 'email')"><br><br>
+                    <input type="text" id="find-by-username" placeholder="Buscar por Username"><input type="button" id="bt-find-by-username" value="Buscar" onclick="app.findAllUsers('find-by-username', 'user')"><br><br>
+                    <input type="text" id="find-by-ideverlive" placeholder="Buscar por ID do Everlive"><input type="button" id="bt-find-by-ideverlive" value="Buscar" onclick="app.findUserById()"><br><br>
+                    <input type="button" id="bt-find-by-allusers" value="Buscar todos usuários" onclick="app.findAllUsers()">
+                    <p id="show-info-find"></p>
+                </form>
+            </section>
+
+            <!--************************** LISTA USUARIO ********************************************-->
+            <section id="section-list-user">
+                <ul id="list-user">
+                </ul>
+            </section>
+        </div>
+
+        <div id="div-push">
+            <form name="form-push">
+                <h1>Push Notification</h1>
+                <input type="textarea" id="message-push" placeholder="Escreva a mensagem aqui..."><br><br>
+                <input type="button" id="bt-send-push" value="Enviar push">
+            </form>
+        </div>
+
+        <div id="spinner" class="active">
+            <span id="first" class="ball"></span>
+            <span id="second" class="ball"></span>
+            <span id="third" class="ball"></span>
+        </div>
+        
+    </body>
+</html>
