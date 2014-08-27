@@ -38,6 +38,12 @@ HtmlElement.prototype = {
 		spanSamsungId.className = "list-samsungid";
 		spanSamsungId.innerHTML = samsungId;
 		document.getElementById(newList.id).appendChild(spanSamsungId);
+
+		var inputButton = document.createElement("input");
+		inputButton.type = "button";
+		inputButton.value = "Ações"
+		inputButton.setAttribute("onclick","displayControl.showActionsUser(" + "'" + id + "'" + ")");
+		document.getElementById(newList.id).appendChild(inputButton);
 	},
 
 	//cria mais paginas para os registros de usuario
@@ -73,5 +79,16 @@ HtmlElement.prototype = {
 				htmlElement.createPages(data.result[i]);
 			}	
 		}			
+	},
+
+	//obtem dados de um unico usuario
+	getItensSingleUser: function(data) {
+		var name = data.result.DisplayName;
+		var user = data.result.Username;
+		var email = data.result.Email;
+		var samsungId = data.result.SamsungID;
+		var id = data.result.Id;
+
+		htmlElement.createUsersList(name, user, email, samsungId, id);
 	}
 } 

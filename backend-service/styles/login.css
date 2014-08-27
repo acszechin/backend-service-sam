@@ -69,7 +69,7 @@ after { clear: both; }
 }
 
 #login form input[type="button"] {
-  background: rgb(94, 86, 86);
+  background: rgb(255, 92, 0);
   width: 100%;
   height: 50px;
   font-weight: bold;
@@ -80,7 +80,7 @@ after { clear: both; }
 }
 
 #login form input[type="button"]:hover {
-  background: rgb(48, 88, 173);
+  background: rgb(173, 65, 3);
   color: white;
   font-weight: bold;
 }

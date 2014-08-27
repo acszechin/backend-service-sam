@@ -23,6 +23,8 @@ App.prototype = {
     login: function(user, pass){
         console.log("inicio login...");
 
+        displayControl.resetForms();
+
         var el = app.getEverliveObject();
         el.Users.login(
             user,
@@ -71,10 +73,76 @@ App.prototype = {
         );
     },
 
+    //deleta unico usuario
+    deleteSingleUser: function () {
+        console.log("inicio deleteSingleUser...");
+
+        var fields = document.getElementById("form-actions-user").getElementsByClassName("input-edit-user");
+        var id = fields[1].id;  
+
+        var el = app.getEverliveObject();
+        el.Users.destroySingle(
+            {
+                Id: id    
+            },
+            function (success) {
+                console.log("sucesso na exclusao do usuario: " + JSON.stringify(success));
+            },
+            function (error) {
+                console.log("erro na exclusao do usuario: " +  JSON,stringify(error));
+            }
+        );
+    },
+
+    //deleta todos usuarios
+    deleteAllUsers: function () {
+        console.log("inicio deleteAllUsers...");
+
+        var el = app.getEverliveObject();
+        el.Users.destroy().then(
+            function (success) {
+                console.log("todos usuarios excluidos com sucesso: " + JSON,stringify(success));
+            },
+            function (error) {
+                console.log("erro ao excluir todos usuarios: " + JSON.stringify(error));
+            }
+        );
+    }
+
+    //autaliza usuario
+    updateUser: function () {
+        console.log("inicio updateUser...");
+
+        //obtem elemento HTML com dados
+        var fields = document.getElementById("form-actions-user").getElementsByClassName("input-edit-user");  
+
+        //obtem dados para alteracao
+        var data = {
+            'Id': fields[1].id, 
+            'Username': fields[0].value, 
+            'Email': fields[1].value, 
+            'DisplayName': fields[2].value
+        };
+
+
+        var el = app.getEverliveObject();
+        el.Users.updateSingle(
+            data,
+            function (success) {
+                console.log("sucesso na alteracao: " + JSON.stringify(success));
+            },
+            function (error) {
+                console.log("erro na alteracao: " + JSON.stringify(error));
+                displayControl.showError(error.code);
+            }
+        );
+    },
+
     //busca todos usuarios
     findAllUsers: function(id, factor){
         console.log("inicio findAllUsers...");
         
+        displayControl.resetUserList();
         displayControl.hideFormFindUser();
         displayControl.showLoader();
 
@@ -84,7 +152,7 @@ App.prototype = {
         el.Users.get().then(
             function(data){
                 console.log("usuarios: " + JSON.stringify(data));
-                alert("usuarios: " + JSON.stringify(data));
+
                 if (factor !== undefined) {
                     app.findUserById(data, factor, element);
                 } else{
@@ -93,9 +161,8 @@ App.prototype = {
 
                     //cria elementos para mostrar usuarios
                     htmlElement.getItensUsersArray(data);                            
-                                        
-                    document.getElementById("section-list-user").style.display = "block";
-                    document.getElementById("list-user").style.display = "block";
+                    
+                    displayControl.showListUsers();                    
                 }
             },
             function(error){
@@ -106,6 +173,7 @@ App.prototype = {
         );
     },
 
+    //busca unico usuario
     findUserById: function(usersArray, factor, element){
         console.log("findUserById inicio...");
         var id;
@@ -116,12 +184,19 @@ App.prototype = {
             if (factor === 'name' && usersArray.result[i].DisplayName === element.value){
                 id = usersArray.result[i].Id;
             }
+
             //faz a busca por Email
             if (factor === 'email' && usersArray.result[i].Email === element.value){
                 id = usersArray.result[i].Id;
             }
+
             //faz a busca por Usuario
             if (factor === 'user' && usersArray.result[i].Username === element.value){
+                id = usersArray.result[i].Id; 
+            }
+
+            //faz a busca por SamsungID
+            if (factor === 'samsungid' && usersArray.result[i].SamsungID === element.value){
                 id = usersArray.result[i].Id; 
             }
         }        
@@ -132,17 +207,19 @@ App.prototype = {
                 console.log("usuario: " + JSON.stringify(data));
                 alert("usuario: " + JSON.stringify(data));
                 displayControl.hideFormFindUser();
-                displayControl.hideLoader();                
+                displayControl.hideLoader();
+
+                //cria elementos para mostrar usuarios
+                htmlElement.getItensSingleUser(data);                            
+                
+                displayControl.showListUsers();                 
             },
             function(error){
                 console.log("erro ao buscar usuario: " + JSON.stringify(error));
                 displayControl.showError(error.code);
                 displayControl.hideFormFindUser();
                 displayControl.hideLoader();
-
-                setTimeout(function(){
-                    document.getElementById("show-info-find").style.display = "none";
-                }, 3000);
+                displayControl.showFindUsers();
             }
         );
     },  

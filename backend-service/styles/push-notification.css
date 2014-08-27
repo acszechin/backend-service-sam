@@ -1,19 +1,58 @@
-body #div-push{
-	position: relative;
+body #section-push{
+	position: absolute;
 	display: none;
-	left: 40%;
+  left: 40%;
+  top: 30px;
+  width: 500px;
 }
 
-#div-push input{
+#section-push input{
   border-radius: 5px 5px 5px 5px;  
   font-weight: bold;
   margin-bottom: 1em;
   padding: 0 16px;
-  width: 235px;
   height: 50px;
+  position: absolute;
 }
 
-#div-push form h1{
+#section-push form input[type="text"]{
+  color: rgb(48, 88, 173); 
+  width: 500px;
+}
+
+#section-push form input[type="button"]{
+  background: rgb(255, 92, 0);
+  color: white;
+  width: 530px;
+  top: 150px;
+}
+
+#section-push form input[type="button"]:hover {
+  background: rgb(173, 65, 3);
+  color: white;
+}
+
+#section-push form input[type="button"]:active {
+  background: rgb(48, 88, 100);
+  color: white;
+}
+
+#section-push h1{
 	text-align: center;
 	color: white;
 }
+
+#section-push form #show-info-push{
+  position: absolute;
+  top: 250px;
+  width: 530px;
+  text-align: center;
+  background-color: white;
+  color: rgb(48, 88, 173);
+  border: 3px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  display: none;    
+}
+
+
