@@ -12,9 +12,6 @@
         <script src="scripts/app/push-notification.js" type="text/javascript"></script>
 
         <!--<script src="scripts/app/register.js" type="text/javascript"></script>-->
-        <style type="text/css">
-
-        </style>
 
         <link href="styles/main.css" rel="stylesheet" />
         <link href="styles/login.css" rel="stylesheet" />
@@ -82,7 +79,8 @@
 
             <!--************************** LISTA USUARIO ********************************************-->
             <section id="section-list-user">
-                <ul id="list-user">
+                <h1>Resultado de busca de usuários</h1>                
+                <ul id="list-user">                    
                 </ul>
             </section>
 
@@ -125,6 +123,23 @@
             <span id="second" class="ball"></span>
             <span id="third" class="ball"></span>
         </div>
+
+        <p id="demo"></p>
         
     </body>
+
+    <script type="text/javascript">
+
+        window.onload = function testeLoad () {
+            app.login('antonio', 'antonio');
+        }
+
+        var person = prompt("Please enter your name", "Harry Potter");
+        
+        if (person != null) {
+            document.getElementById("demo").innerHTML =
+            "Hello " + person + "! How are you today?";
+        }        
+
+    </script>
 </html>

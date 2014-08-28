@@ -107,7 +107,7 @@ App.prototype = {
                 console.log("erro ao excluir todos usuarios: " + JSON.stringify(error));
             }
         );
-    }
+    },
 
     //autaliza usuario
     updateUser: function () {
