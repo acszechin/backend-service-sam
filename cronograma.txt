@@ -1,0 +1,28 @@
+*************************   BACKEND  *****************************
+O que falta: 
+- arrumar atualização da pagina e continuar logado
+- arrumar layout da busca de usuarios
+- ver porque na lista de usuarios cria linha <li> em branco
+- ver porque na lista de usuarios usando a busca simples, porque mostra outro usuarios alem do que foi encontrado
+- enviar push notification para unico usuario
+- limpar lista geral de usuarios
+- colocar padrao nas cores de informações de erros, alertar e sucesso
+- criar projeto no Google para envio de push
+- criar novo projeto Backend-service e usar a nova ApiKey
+
+Concluído:
+- adicionar usuario
+- excluir usuario unico
+- enviar pysh notification para todos
+******************************************************************
+
+
+
+***********************   APLICATIVO   ***************************
+O que falta:
+- arrumar botao de voltar quando fizer o logout
+- configurar para receber push notification
+- tirar as permissões desnecessarias
+- personalizar mensagem de Id não encontrado
+
+
