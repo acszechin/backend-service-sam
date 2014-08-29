@@ -13,6 +13,7 @@ DisplayControl.prototype = {
 		console.log("inicio showAddNewUser...");
 
 		displayControl.resetForms();
+		displayControl.resetAttrFormEditUser();
 
 		document.getElementById("new-user").style.display = "block";
 
@@ -27,6 +28,7 @@ DisplayControl.prototype = {
 		console.log("inicio showFindUsers...");
 
 		displayControl.resetForms();
+		displayControl.resetAttrFormEditUser();
 
 		document.getElementById("find-user").style.display = "block";
 
@@ -38,7 +40,10 @@ DisplayControl.prototype = {
 
 	//exbibe lista de usuarios
 	showListUsers: function(){
+		console.log("inicio showListUsers...");
+
 		displayControl.resetForms();
+		displayControl.resetAttrFormEditUser();
 
         document.getElementById("section-list-user").style.display = "block";
         document.getElementById("list-user").style.display = "block";
@@ -49,6 +54,7 @@ DisplayControl.prototype = {
 		console.log("inicio showSettingsPush...");
 
 		displayControl.resetForms();
+		displayControl.resetAttrFormEditUser();
 
 		document.getElementById("section-push").style.display = "block";
 
@@ -133,7 +139,11 @@ DisplayControl.prototype = {
 				textInfo = document.getElementById("show-info-find");
 				break;
 			case "push":
-				textInfo = document.getElementById("show-info-push");		
+				textInfo = document.getElementById("show-info-push");
+				break;
+			case "edit":
+				textInfo = document.getElementById("show-info-actions");			
+				break;
 		}
 		
 		textInfo.style.display = "block";
@@ -155,13 +165,13 @@ DisplayControl.prototype = {
 		}, 3000);		
 	},
 
-	showError: function(errorCode){
+	showError: function(errorCode, type, factor){
 		switch(errorCode){
 			case 201:
 				displayControl.showInfo("Já existe um usuário com o mesmo username", "error" , "add");
 				break;
 			case 211:
-				displayControl.showInfo("Já existe um usuário com o mesmo email", "error", "add");
+				displayControl.showInfo("Já existe um usuário com o mesmo email", type, factor);
 				break;
 			case 601:
 				displayControl.showInfo("Por favor, escreva uma mensagem!", "alert", "push");
@@ -175,10 +185,11 @@ DisplayControl.prototype = {
 		}
 	},
 
+	//habilita o form edicao do usuario
 	enableEdit: function () {
+		console.log("inicio enableEdit...");
 		var formEdit = document.getElementById("form-actions-user");
-		var inputEdit = formEdit.getElementsByClassName("input-edit-user");
-		var inputUpdate = formEdit.getElementsByClassName("update-user"); 
+		var inputEdit = formEdit.getElementsByClassName("input-edit-user"); 
 
 		for (var i = 0; i < inputEdit.length; i++) {
 			inputEdit[i].disabled = false;
@@ -186,9 +197,55 @@ DisplayControl.prototype = {
 
 		inputEdit[0].focus();
 
-		inputUpdate.item().value = "Salvar";
-		inputUpdate.item().setAttribute("onclick", "app.updateUser()");		
+		displayControl.changeAttrEvent();	
 	},
+
+	//desabilita o form de edicao do usario
+	disableEdit: function(){
+		console.log("inicio disableEdit...");
+
+		var formEdit = document.getElementById("form-actions-user");
+		var inputEdit = formEdit.getElementsByClassName("input-edit-user"); 
+
+		for (var i = 0; i < inputEdit.length; i++) {
+			inputEdit[i].disabled = true;
+		}
+
+		displayControl.changeAttrEvent();		
+	},
+
+	//troca a funcao do evento onclick do botao de editar usuario
+	changeAttrEvent: function () {
+		console.log("inicio changeAttrEevent...");
+
+		var formEdit = document.getElementById("form-actions-user");
+		var inputUpdate = formEdit.getElementsByClassName("update-user");
+
+		if (inputUpdate.item().value === "Editar"){
+			inputUpdate.item().value = "Salvar";
+			inputUpdate.item().setAttribute("onclick", "app.updateUser()");			
+		} else{
+			inputUpdate.item().value = "Editar";
+			inputUpdate.item().setAttribute("onclick", "displayControl.enableEdit()");
+		}	
+	},
+
+	//reseta para configuracao inicial os atributos do form de edicao de usuario
+	resetAttrFormEditUser: function () {
+		console.log("inicio resetAttrFormEditUser...");
+
+		var formEdit = document.getElementById("form-actions-user");
+		var inputEdit = formEdit.getElementsByClassName("input-edit-user");
+		var inputUpdate = formEdit.getElementsByClassName("update-user"); 
+
+		for (var i = 0; i < inputEdit.length; i++) {
+			inputEdit[i].disabled = true;
+		}
+
+		inputUpdate.item().value = "Editar";
+		inputUpdate.item().setAttribute("onclick", "displayControl.enableEdit()");
+	},
+
 
 	clearFormAddUser: function(form){
 		console.log("inicio clearFormAddUser...");

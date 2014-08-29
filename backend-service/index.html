@@ -59,7 +59,7 @@
                     <input type="text" id"new-displayname" placeholder="Display Name" required><br><br> 
                     <input type="text" id"new-samsungId" placeholder="Samsung ID" required><br>
                     <input type="reset" id"cancel-new-user" value="Limpar">
-                    <input type="button" id"save-new-user" value="Salvar" onclick="app.validateForm(this.form)">
+                    <input type="button" id"save-new-user" value="Cadastrar" onclick="app.validateForm(this.form)">
                     <p id="show-info-add"></p>
                 </form>
             </section>
@@ -105,13 +105,14 @@
                     <input type="button" id"push-to-user" value="Push" onclick="">
                     <input type="button" id"delete-user" value="Excluir" onclick="app.deleteSingleUser()">
                     <input class="update-user" type="button" id"edit-user" value="Editar" onclick="displayControl.enableEdit()">
-                    <p id="show-info-add"></p>
+                    <p id="show-info-actions"></p>
 
                     <br><br>
 
                     <section id="push-single-user">
                         <input class="input-edit-user" type="text" id="input-push-single-user" placeholder="Escreva a mensagem de push aqui..." required><br>
                         <input type="button" id"bt-send-push-single-user" value="Enviar" onclick="">
+                        <p id="show-info-single-push"></p>
                     </section>
                 </form>
             </section>            

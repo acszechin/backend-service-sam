@@ -87,9 +87,11 @@ App.prototype = {
             },
             function (success) {
                 console.log("sucesso na exclusao do usuario: " + JSON.stringify(success));
+                displayControl.showInfo("Usuário excluído com sucesso!", "success", "edit");
             },
             function (error) {
                 console.log("erro na exclusao do usuario: " +  JSON,stringify(error));
+                displayControl.showError(error.code, "error", "edit");
             }
         );
     },
@@ -124,16 +126,19 @@ App.prototype = {
             'DisplayName': fields[2].value
         };
 
-
         var el = app.getEverliveObject();
         el.Users.updateSingle(
             data,
             function (success) {
                 console.log("sucesso na alteracao: " + JSON.stringify(success));
+                //displayControl.changeAttrEvent();
+                displayControl.disableEdit();
+                displayControl.showInfo("Alteração concluída com sucesso!", "success", "edit");
             },
             function (error) {
                 console.log("erro na alteracao: " + JSON.stringify(error));
-                displayControl.showError(error.code);
+                //displayControl.changeAttrEvent();
+                displayControl.showError(error.code, "alert", "edit");
             }
         );
     },
