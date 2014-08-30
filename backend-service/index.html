@@ -10,6 +10,7 @@
         <script src="scripts/app/display-control.js" type="text/javascript"></script>
         <script src="scripts/app/create-elements.js" type="text/javascript"></script>
         <script src="scripts/app/push-notification.js" type="text/javascript"></script>
+        <script src="scripts/app/custom-alert.js" type="text/javascript"></script>
 
         <!--<script src="scripts/app/register.js" type="text/javascript"></script>-->
 
@@ -17,6 +18,7 @@
         <link href="styles/login.css" rel="stylesheet" />
         <link href="styles/loader.css" rel="stylesheet" />
         <link href="styles/push-notification.css" rel="stylesheet" />
+        <link href="styles/custom-alert.css" rel="stylesheet" />
     </head>
     <body>
         <!--************************** LOGIN ********************************************-->
@@ -45,7 +47,7 @@
 
                 <input type="button" value="Adicionar usuário" onclick="displayControl.showAddNewUser()"><br><br>  
                 <input type="button" value="Buscar usuários" onclick="displayControl.showFindUsers()"><br><br>  
-                <input type="button" value="Limpar lista de usuários" onclick=""><br><br>  
+                <input type="button" value="Limpar lista de usuários" onclick="displayControl.showDeleteAllUsers()"><br><br>  
                 <input type="button" value="Enviar push para todos" onclick="displayControl.showSettingsPush()">             
             </section>
 
@@ -102,21 +104,35 @@
                     <input class="input-edit-user" type="email" id"edit-email" placeholder="Email" disabled required><br><br> 
                     <input class="input-edit-user" type="text" id"edit-displayname" placeholder="Display Name" disabled required><br><br> 
                     <input class="input-edit-user" type="text" id"edit-samsungId" placeholder="Samsung ID" disabled required><br>
-                    <input type="button" id"push-to-user" value="Push" onclick="">
+                    <input type="button" id"push-to-user" value="Push" onclick="Alert.render('You look very pretty today.')">
                     <input type="button" id"delete-user" value="Excluir" onclick="app.deleteSingleUser()">
                     <input class="update-user" type="button" id"edit-user" value="Editar" onclick="displayControl.enableEdit()">
                     <p id="show-info-actions"></p>
-
-                    <br><br>
-
-                    <section id="push-single-user">
-                        <input class="input-edit-user" type="text" id="input-push-single-user" placeholder="Escreva a mensagem de push aqui..." required><br>
-                        <input type="button" id"bt-send-push-single-user" value="Enviar" onclick="">
-                        <p id="show-info-single-push"></p>
-                    </section>
                 </form>
+            </section>
+
+            <!--************************************  DELETA TODOS USUARIOS  ********************************************-->
+            <section id="section-delete-all">
+                <h1>Excluir lista de usuários</h1>
+                <p>Atenção!!!</p> 
+                <p>Se prosseguir com essa ação, irá excluir toda lista de usuário,</p>
+                <p>inclusive a sua conta. Caso confirme essa ação, para ter um novo acesso, terá</p>
+                <p>que entrar em contato com o administrador.</p>
+                <p>Deseja prosseguir?</p>                
+                <input type="button" id="delete-all-users-cancel" value="Não" onclick="displayControl.hideDeleteAllUsers()">
+                <input type="button" id="delete-all-users-confirm" value="Sim" onclick="app.deleteAllUsers()">
+                <span id="show-info-delete-all"></span>
             </section>            
 
+        </div>
+
+        <div id="dialogoverlay"></div>
+        <div id="dialogbox">
+          <div>
+            <div id="dialogboxhead"></div>
+            <div id="dialogboxbody"></div>
+            <div id="dialogboxfoot"></div>
+          </div>
         </div>    
 
         <div id="spinner" class="active">
@@ -134,13 +150,5 @@
         window.onload = function testeLoad () {
             app.login('antonio', 'antonio');
         }
-
-        var person = prompt("Please enter your name", "Harry Potter");
-        
-        if (person != null) {
-            document.getElementById("demo").innerHTML =
-            "Hello " + person + "! How are you today?";
-        }        
-
     </script>
 </html>

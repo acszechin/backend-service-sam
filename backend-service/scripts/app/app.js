@@ -90,7 +90,7 @@ App.prototype = {
                 displayControl.showInfo("Usuário excluído com sucesso!", "success", "edit");
             },
             function (error) {
-                console.log("erro na exclusao do usuario: " +  JSON,stringify(error));
+                console.log("erro na exclusao do usuario: " +  JSON.stringify(error));
                 displayControl.showError(error.code, "error", "edit");
             }
         );
@@ -103,10 +103,12 @@ App.prototype = {
         var el = app.getEverliveObject();
         el.Users.destroy().then(
             function (success) {
-                console.log("todos usuarios excluidos com sucesso: " + JSON,stringify(success));
+                console.log("todos usuarios excluidos com sucesso: " + JSON.stringify(success));
+                displayControl.showInfo("Todos usuários foram excluídos!", "success", "delete");
             },
             function (error) {
                 console.log("erro ao excluir todos usuarios: " + JSON.stringify(error));
+                displayControl.showError(error.code, "error", "edit");
             }
         );
     },

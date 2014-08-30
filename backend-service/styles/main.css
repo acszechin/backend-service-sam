@@ -162,6 +162,10 @@ body #users-view{
   top: 30px;  
 }
 
+#users-view #section-list-user ul{
+  list-style: none;
+}
+
 #users-view #section-list-user ul li{
   position: relative;
   background-color: white;
@@ -258,7 +262,52 @@ body #users-view{
   display: none;  
 }
 
-
-#users-view #section-user-action form #push-single-user{
+#users-view #section-delete-all{
+  position: absolute;
+  left: 30%;
+  top: 30px;
   display: none;
+}
+
+#users-view #section-delete-all h1, p{
+  color: white;
+  text-align: center;
+} 
+
+#users-view #section-delete-all input[type="button"]{
+  width: 100px;
+  background: rgb(255, 92, 0);
+  color: white;
+  font-weight: bold;
+  position: absolute;
+}
+
+#users-view #section-delete-all input[type="button"]:hover{
+  background: rgb(173, 65, 3);
+  color: white;
+  font-weight: bold;
+}
+
+#users-view #section-delete-all input[type="button"]:active{
+  background: rgb(48, 88, 100);
+  color: white;
+  font-weight: bold;  
+}
+ 
+#users-view #section-delete-all #delete-all-users-cancel{
+  left: 215px;
+}
+
+#users-view #section-delete-all #delete-all-users-confirm{
+  left: 335px;
+}
+
+#show-info-delete-all{
+  text-align: center;
+  background-color: white;
+  color: rgb(48, 88, 173);
+  border: 3px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  display: none;    
 }

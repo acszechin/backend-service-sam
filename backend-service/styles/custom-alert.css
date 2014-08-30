@@ -1,0 +1,90 @@
+#dialogoverlay{
+	display: none;
+	opacity: .8;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: #FFF;
+	width: 100%;
+	z-index: 10;
+}
+#dialogbox{
+	display: none;
+	position: fixed;
+	background: #000;
+	border-radius:7px; 
+	width:550px;
+	z-index: 10;
+}
+
+#dialogboxbody input{
+	border-radius: 5px 5px 5px 5px;  
+	font-weight: bold;
+	margin-bottom: 1em;
+	padding: 0 16px;
+	height: 50px;
+}
+
+#dialogboxbody input[type="text"]{
+	width: 465px;
+	left: 10px;
+	background-color: white;
+  	color: rgb(48, 88, 173);  
+	font-weight: bold;
+}
+
+#dialogboxbody input[type="button"]{
+	width: 100px;
+}
+
+#dialogboxfoot input[type="button"]{
+	border-radius: 5px 5px 5px 5px;  
+	font-weight: bold;
+	margin-bottom: 1em;
+	padding: 0 16px;
+	height: 30px;
+	color: white;
+	background-color: rgb(255, 92, 0);	
+}
+
+#dialogboxfoot input[type="button"]:hover{
+	background-color: rgb(173, 65, 3);
+}
+#dialogboxfoot input[type="button"]:active{
+	background-color: rgb(48, 88, 100);
+}
+
+#dialogbox > div{ 
+	background:#FFF; 
+	margin:8px; 
+}
+
+#dialogbox > div > #dialogboxhead{
+	background: #10015F;
+	font-size:19px;
+	padding:10px;
+	color: white; 
+	text-align: center;
+}
+#dialogbox > div > #dialogboxbody{ 
+	background: rgb(48, 88, 173);; 
+	padding: 20px; 
+	color: white; 
+}
+
+#dialogbox > div > #dialogboxfoot{ 
+	background: #10015F; 
+	padding: 10px; 
+	text-align: center; 
+	height: 30px;
+}
+
+#info-push-single-user{
+  text-align: center;
+  background-color: white;
+  color: rgb(48, 88, 173);
+  border: 3px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  display: none;  	
+}

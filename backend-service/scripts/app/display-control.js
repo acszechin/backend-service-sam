@@ -21,6 +21,7 @@ DisplayControl.prototype = {
 		document.getElementById("section-list-user").style.display = "none";
 		document.getElementById("find-user").style.display = "none";
 		document.getElementById("section-push").style.display = "none";
+		displayControl.hideDeleteAllUsers();
 	},
 
 	//exibe tela para busca de usuarios
@@ -36,6 +37,20 @@ DisplayControl.prototype = {
 		document.getElementById("section-list-user").style.display = "none";
 		document.getElementById("new-user").style.display = "none";
 		document.getElementById("section-push").style.display = "none";
+		displayControl.hideDeleteAllUsers();
+	},
+
+	//exibe tela para exclusao de todos usuarios
+	showDeleteAllUsers: function(){
+		console.log("inicio showDeleteAllUsers...");
+
+		document.getElementById("section-delete-all").style.display = "block";
+
+		document.getElementById("new-user").style.display = "none";
+		document.getElementById("section-user-actions").style.display = "none";
+		document.getElementById("section-list-user").style.display = "none";
+		document.getElementById("find-user").style.display = "none";
+		document.getElementById("section-push").style.display = "none";		
 	},
 
 	//exbibe lista de usuarios
@@ -47,6 +62,7 @@ DisplayControl.prototype = {
 
         document.getElementById("section-list-user").style.display = "block";
         document.getElementById("list-user").style.display = "block";
+        displayControl.hideDeleteAllUsers();
 	},
 
 	//exibe tela de envio e configuracao do push notification
@@ -62,6 +78,7 @@ DisplayControl.prototype = {
 		document.getElementById("section-list-user").style.display = "none";
 		document.getElementById("new-user").style.display = "none";
 		document.getElementById("find-user").style.display = "none";
+		displayControl.hideDeleteAllUsers();		
 	},
 
 	//exibe tela de acoes para um usuario
@@ -71,6 +88,13 @@ DisplayControl.prototype = {
 		displayControl.showInfoUser(id);
 
 		document.getElementById("section-user-actions").style.display = "block";
+	},
+
+	//esconde tela de excluir todos usuarios
+	hideDeleteAllUsers: function () {
+		console.log("inicio hideDeleteAllUsers...");
+
+		document.getElementById("section-delete-all").style.display = "none";
 	},
 
 	//esconde o form de busca de usuarios
@@ -141,9 +165,15 @@ DisplayControl.prototype = {
 			case "push":
 				textInfo = document.getElementById("show-info-push");
 				break;
+			case "pushSingle":
+				textInfo = document.getElementById("info-push-single-user");
+				break;		
 			case "edit":
 				textInfo = document.getElementById("show-info-actions");			
 				break;
+			case "delete":
+				textInfo = document.getElementById("show-info-actions");
+				break;								
 		}
 		
 		textInfo.style.display = "block";
@@ -177,7 +207,7 @@ DisplayControl.prototype = {
 				displayControl.showInfo("Por favor, escreva uma mensagem!", "alert", "push");
 				break;
 			case 603:
-				displayControl.showInfo("Usuário sem permissão para esse tipo de ação", "error", "add");
+				displayControl.showInfo("Usuário sem permissão para esse tipo de ação", type, factor);
 				break;		
 			case 801:
 				displayControl.showInfo("Usuário não encontrado com esse parâmetro", null, "find");
@@ -251,5 +281,5 @@ DisplayControl.prototype = {
 		console.log("inicio clearFormAddUser...");
 
 		form.reset();
-	}	
+	}	 
 }
