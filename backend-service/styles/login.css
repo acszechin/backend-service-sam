@@ -21,7 +21,7 @@ after { clear: both; }
 
 #login {
   position: relative;
-  display: block;
+  display: none;
   margin: 0px auto;
   width: 320px;
 }

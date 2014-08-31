@@ -31,9 +31,9 @@ App.prototype = {
             pass,
             function(success){
                 console.log(JSON.stringify(success));
-                document.getElementById("login").style.display = "none";
+                displayControl.hideDisplayLogin();
                 document.getElementById("users-view").style.display = "block";
-                //app.saveCurrentUser(username, password);
+                app.saveCurrentUser(user, pass);
             },
             function(error){
                 console.log(JSON.stringify(error));
@@ -47,6 +47,16 @@ App.prototype = {
         );
 
         console.log("fim login...");
+    },
+
+    //faz logout 
+    logout: function () {
+        console.log("inicio logout");
+
+        window.localStorage.clear();
+
+        displayControl.hideAllPages();
+        displayControl.showLogin();
     },
 
     //novo usuario
@@ -212,7 +222,6 @@ App.prototype = {
         el.Users.getById(id).then(
             function(data){
                 console.log("usuario: " + JSON.stringify(data));
-                alert("usuario: " + JSON.stringify(data));
                 displayControl.hideFormFindUser();
                 displayControl.hideLoader();
 
@@ -302,6 +311,7 @@ App.prototype = {
 
     //armazena usuario corrente 
     saveCurrentUser: function(user, pass){
+        console.log("inicio saveCurrentUser...");
         var dataUser = [user, pass];
         app.storageArray(dataUser);
     },

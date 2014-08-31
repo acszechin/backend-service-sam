@@ -170,7 +170,12 @@ body #users-view{
   position: relative;
   background-color: white;
   color: rgb(48, 88, 173);
+  border: 2px solid;
+  border-radius: 10px 10px 10px 10px;
+  font-family: cursive;
+  font-weight: bold;
   height: 30px;
+  padding-bottom: 4px;
 }
 
 #users-view #section-list-user h1{
@@ -184,13 +189,28 @@ body #users-view{
   font-size: 12px;
 }
 
-#users-view #section-list-user ul input{
+#users-view #section-list-user ul input[type="button"]{
   position: absolute;
-  top: 2px;
-  left: 800px;
-  width: 50px;
+  top: 4px;
+  left: 790px;
+  width: 58px;
   height: 25px;
   font-size: 10px;
+  font-weight: bold;
+  background: rgb(255, 92, 0);
+  color: white;  
+}
+
+#users-view #section-list-user ul input[type="button"]:hover{
+  background: rgb(173, 65, 3);
+  color: white;
+  font-weight: bold;
+}
+
+#users-view #section-list-user ul input[type="button"]:active{
+  background: rgb(48, 88, 100);
+  color: white;
+  font-weight: bold;  
 }
 
 #users-view #section-list-user ul .list-displayname{

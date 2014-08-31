@@ -8,6 +8,30 @@ $(function(){
 });
 
 DisplayControl.prototype = {
+	//funcao chamada quando atualiza pagina
+	updatePage: function () {
+		console.log("inicio updatePage...");
+
+		if (app.getStorageArray() === null) {
+			displayControl.showLogin();
+		} else{
+			displayControl.showUsersView();
+		}
+	},
+
+	//exibe a tela de login 
+	showLogin: function () {
+		console.log("inicio showLogin...");
+
+		document.getElementById("login").style.display = "block";
+	},
+
+	//exibe primeira tela apos o login
+	showUsersView: function () {
+		console.log("inicio showUsersView...");		
+		document.getElementById("users-view").style.display = "block";
+	},
+
 	//exibe form de cadastro de novo usuario
 	showAddNewUser: function(){
 		console.log("inicio showAddNewUser...");
@@ -90,6 +114,20 @@ DisplayControl.prototype = {
 		document.getElementById("section-user-actions").style.display = "block";
 	},
 
+	//esconde form de login
+	hideDisplayLogin: function () {
+		console.log("inicio hideDisplayLogin...");
+
+		document.getElementById("login").style.display = "none";
+	},
+
+	//esconde tela de todas as paginas apos login(logout)
+	hideAllPages: function () {
+		console.log("inicio hideAllPages...");
+
+		document.getElementById("users-view").style.display = "none";
+	},
+
 	//esconde tela de excluir todos usuarios
 	hideDeleteAllUsers: function () {
 		console.log("inicio hideDeleteAllUsers...");
@@ -127,7 +165,9 @@ DisplayControl.prototype = {
 	resetUserList: function(){
 		var list = document.getElementById("list-user");
 
-		for (var i = 0; i < list.children.length; i++) {
+		var len = list.children.length;
+
+		for (var i = 0; i < len; i++) {
 			list.children[i].remove();
 		}
 	},
@@ -221,7 +261,7 @@ DisplayControl.prototype = {
 		var formEdit = document.getElementById("form-actions-user");
 		var inputEdit = formEdit.getElementsByClassName("input-edit-user"); 
 
-		for (var i = 0; i < inputEdit.length; i++) {
+		for (var i = 0; i < inputEdit.length - 1; i++) {
 			inputEdit[i].disabled = false;
 		}
 

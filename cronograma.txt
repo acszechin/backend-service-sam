@@ -1,14 +1,9 @@
 ﻿*************************   BACKEND  *****************************
 O que falta: 
-- arrumar atualização da pagina e continuar logado
-- arrumar layout da busca de usuarios
-- ver porque na lista de usuarios cria linha <li> em branco
-- ver porque na lista de usuarios usando a busca simples, porque mostra outro usuarios alem do que foi encontrado
+- ver porque é necessario clicar duas vezes no botão "Buscar", para efetuar a busca
 - colocar padrao nas cores de informações de erros, alertar e sucesso
 - criar projeto no Google para envio de push
 - criar novo projeto Backend-service e usar a nova ApiKey
-- tirar <input> de samsungId da edição
-- colocar uma mensagem de bem vindo quando logar 
 ******************************************************************
 
 
@@ -17,5 +12,7 @@ O que falta:
 O que falta:
 - configurar para receber push notification
 - tirar as permissões desnecessarias
+
+
 
 

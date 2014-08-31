@@ -20,7 +20,7 @@
         <link href="styles/push-notification.css" rel="stylesheet" />
         <link href="styles/custom-alert.css" rel="stylesheet" />
     </head>
-    <body>
+    <body onload="displayControl.updatePage()">
         <!--************************** LOGIN ********************************************-->
         <div id="login">
             <form name='form-login' id="form-login">                
@@ -28,10 +28,10 @@
                 <h1>GUIA DE EXECUÇÃO</h1>
 
                 <span class="fontawesome-user"><img src="styles/images/icon-user.png"></span>
-                <input type="text" id="user" placeholder="Usuário" value="antonio" required>
+                <input type="text" id="user" placeholder="Usuário" required>
 
                 <span class="fontawesome-lock"><img src="styles/images/icon-password.png"></span>
-                <input type="password" id"pass" placeholder="Senha" value="antonio" required>               
+                <input type="password" id"pass" placeholder="Senha" required>               
                 <input type="button" value="Login" onclick="app.getDataForm()">
                 <p id="show-error-login">Usuário ou senha inválido.</p>
                 <footer><img id="logo-footer" src="styles/images/samsung.png"></footer>
@@ -48,7 +48,8 @@
                 <input type="button" value="Adicionar usuário" onclick="displayControl.showAddNewUser()"><br><br>  
                 <input type="button" value="Buscar usuários" onclick="displayControl.showFindUsers()"><br><br>  
                 <input type="button" value="Limpar lista de usuários" onclick="displayControl.showDeleteAllUsers()"><br><br>  
-                <input type="button" value="Enviar push para todos" onclick="displayControl.showSettingsPush()">             
+                <input type="button" value="Enviar push para todos" onclick="displayControl.showSettingsPush()"><br><br>             
+                <input type="button" value="Logout" onclick="app.logout()">             
             </section>
 
             <!--************************** CADASTRAR USUARIO ********************************************-->   
@@ -145,10 +146,7 @@
         
     </body>
 
-    <script type="text/javascript">
+    <script type="text/javascript">    
 
-        window.onload = function testeLoad () {
-            app.login('antonio', 'antonio');
-        }
     </script>
 </html>
