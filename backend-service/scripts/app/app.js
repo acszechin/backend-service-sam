@@ -73,7 +73,7 @@ App.prototype = {
             },
             function(error){
                 console.log("erro no cadastro: " + JSON.stringify(error));
-                displayControl.showError(error.code);
+                displayControl.showError(error.code, null, "add");
             }
         );
     },
@@ -109,7 +109,8 @@ App.prototype = {
         el.Users.destroy().then(
             function (success) {
                 console.log("todos usuarios excluidos com sucesso: " + JSON.stringify(success));
-                displayControl.showInfo("Todos usuários foram excluídos!", "success", "delete");
+                app.logout();
+                //displayControl.showInfo("Todos usuários foram excluídos!", "success", "delete");
             },
             function (error) {
                 console.log("erro ao excluir todos usuarios: " + JSON.stringify(error));

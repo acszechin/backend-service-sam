@@ -1,4 +1,4 @@
-﻿*************************   BACKEND  *****************************
+*************************   BACKEND  *****************************
 O que falta: 
 - ver porque é necessario clicar duas vezes no botão "Buscar", para efetuar a busca
 - criar novo projeto Backend-service e usar a nova ApiKey
@@ -7,12 +7,6 @@ O que falta:
 ******************************************************************
 
 ***************** TESTAR OS DOIS ********************************
-
-***********************   APLICATIVO   ***************************
-O que falta:
-- configurar para receber push notification
-- tirar as permissões desnecessarias
-
 
 ANTIGO:
 AIzaSyAzIIcP7BSe1nRNuN7z3Cj9kvM5fw0HeWU

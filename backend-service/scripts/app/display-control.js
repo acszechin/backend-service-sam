@@ -224,6 +224,7 @@ DisplayControl.prototype = {
 		if (type === "error"){
 			textInfo.style.color = "rgb(148, 5, 5)";
 			textInfo.style.borderColor = "rgb(148, 5, 5)";
+			textInfo.style.backgroundColor = "white";
 		} else if (type === "alert") {
 			textInfo.style.color = "black";
 			textInfo.style.borderColor = "black";
@@ -231,6 +232,7 @@ DisplayControl.prototype = {
 		} else{
 			textInfo.style.color = "rgb(48, 88, 173)";
 			textInfo.style.borderColor = "rgb(48, 88, 173)";
+			textInfo.style.backgroundColor = "white";
 		}
 
 		setTimeout(function () {
@@ -247,7 +249,7 @@ DisplayControl.prototype = {
 				displayControl.showInfo("Usuário ou senha inválido", type, factor);
 				break;
 			case 211:
-				displayControl.showInfo("Já existe um usuário com o mesmo email", type, factor);
+				displayControl.showInfo("Já existe um usuário com o mesmo email", "alert", factor);
 				break;				
 			case 601:
 				displayControl.showInfo("Por favor, escreva uma mensagem!", "alert", "push");
