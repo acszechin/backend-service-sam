@@ -1,17 +1,22 @@
 ﻿*************************   BACKEND  *****************************
 O que falta: 
 - ver porque é necessario clicar duas vezes no botão "Buscar", para efetuar a busca
-- colocar padrao nas cores de informações de erros, alertar e sucesso
-- criar projeto no Google para envio de push
 - criar novo projeto Backend-service e usar a nova ApiKey
+	ProjectNumber:	835372568419
+	ApiKey..............:	AIzaSyA75r5-tAp4tB93Zc4NVTOqypFfkFhsPdM
 ******************************************************************
 
-
+***************** TESTAR OS DOIS ********************************
 
 ***********************   APLICATIVO   ***************************
 O que falta:
 - configurar para receber push notification
 - tirar as permissões desnecessarias
+
+
+ANTIGO:
+AIzaSyAzIIcP7BSe1nRNuN7z3Cj9kvM5fw0HeWU
+990749078674
 
 
 

@@ -196,6 +196,9 @@ DisplayControl.prototype = {
 
 		var textInfo;
 		switch (factor){
+			case "login":
+				textInfo = document.getElementById("show-error-login");
+				break;
 			case "add":
 				textInfo = document.getElementById("show-info-add");
 				break;
@@ -219,12 +222,12 @@ DisplayControl.prototype = {
 		textInfo.style.display = "block";
 		textInfo.innerHTML = text;
 		if (type === "error"){
-			textInfo.style.color = "rgb(255, 245, 0)";
-			textInfo.style.borderColor = "rgb(255, 245, 0)";
+			textInfo.style.color = "rgb(148, 5, 5)";
+			textInfo.style.borderColor = "rgb(148, 5, 5)";
 		} else if (type === "alert") {
-			textInfo.style.color = "yellow";
-			textInfo.style.borderColor = "yellow";
-			textInfo.style.backgroundColor = "black";
+			textInfo.style.color = "black";
+			textInfo.style.borderColor = "black";
+			textInfo.style.backgroundColor = "yellow";
 		} else{
 			textInfo.style.color = "rgb(48, 88, 173)";
 			textInfo.style.borderColor = "rgb(48, 88, 173)";
@@ -232,7 +235,7 @@ DisplayControl.prototype = {
 
 		setTimeout(function () {
 			textInfo.style.display = "none";
-		}, 3000);		
+		}, 4000);		
 	},
 
 	showError: function(errorCode, type, factor){
@@ -240,9 +243,12 @@ DisplayControl.prototype = {
 			case 201:
 				displayControl.showInfo("Já existe um usuário com o mesmo username", "error" , "add");
 				break;
+			case 205:
+				displayControl.showInfo("Usuário ou senha inválido", type, factor);
+				break;
 			case 211:
 				displayControl.showInfo("Já existe um usuário com o mesmo email", type, factor);
-				break;
+				break;				
 			case 601:
 				displayControl.showInfo("Por favor, escreva uma mensagem!", "alert", "push");
 				break;
@@ -250,7 +256,7 @@ DisplayControl.prototype = {
 				displayControl.showInfo("Usuário sem permissão para esse tipo de ação", type, factor);
 				break;		
 			case 801:
-				displayControl.showInfo("Usuário não encontrado com esse parâmetro", null, "find");
+				displayControl.showInfo("Usuário não encontrado com esse parâmetro", type, factor);
 				break;		
 		}
 	},

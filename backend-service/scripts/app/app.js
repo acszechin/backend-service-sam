@@ -37,12 +37,7 @@ App.prototype = {
             },
             function(error){
                 console.log(JSON.stringify(error));
-                var element = document.getElementById("show-error-login");
-                element.innerHTML = "Usuário ou senha inválido";
-                element.style.display = "block";
-
-                setTimeout(function(){element.style.display = "none";}, 3000);
-
+                displayControl.showError(error.code, "error", "login");
             }
         );
 
@@ -232,7 +227,7 @@ App.prototype = {
             },
             function(error){
                 console.log("erro ao buscar usuario: " + JSON.stringify(error));
-                displayControl.showError(error.code);
+                displayControl.showError(error.code, "alert", "find");
                 displayControl.hideFormFindUser();
                 displayControl.hideLoader();
                 displayControl.showFindUsers();
